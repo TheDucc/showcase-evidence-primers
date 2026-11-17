@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Reject commits that add an em dash (U+2014) or en dash (U+2013).
+# Checks only added lines, so removing an old dash is never blocked.
+bad=$(git diff --cached -U0 --no-color | grep -nP '^\+(?!\+\+).*[\x{2013}\x{2014}]' || true)
+if [ -n "$bad" ]; then
+  echo "pre-commit: em/en dash found in staged additions. Use hyphens (including date ranges)." >&2
+  echo "$bad" | head -20 >&2
+  exit 1
+fi

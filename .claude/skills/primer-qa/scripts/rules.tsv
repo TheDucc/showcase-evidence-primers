@@ -1,0 +1,22 @@
+id	kind	version	needs	what	why
+dash	rule	v2	primer	no em or en dash	project rule 1
+words	rule	v2	primer	at most 1300 words	size cap in primerTemplate.md; an early draft had 1307
+header	rule	v2	primer	v2 header fields present	template header block
+header3	rule	v3	primer	files, legend and terms header lines present	added in v3 after judge reviews
+legend	rule	v3	primer	legend equals the template legend	judge A: labels undefined for a cold reader
+facets	rule	v2	primer	facets 1 to 12 present with the template names	template facet table
+vocab	rule	v2	primer	Depth and Source words come from the legend vocabularies	preflight depth tags
+manysources	lead	v2	primer	a Source cell with three or more values	real primer mixes evidence per cell
+memrow	rule	v2	primer	a memory-only row is a sub-row or facet 12	memory goes in its own sub-row
+filesline	rule	v3	primer	files line parts add up to its total	judge B counted 42 files against a stated count
+ledgersum	rule	v3	ledger	files line equals the ledger counts per Depth	five files were never opened while pass 1 claimed them
+ledgersha	rule	v2	ledger	ledger filename carries the reviewed SHA	a ledger must belong to the reviewed commit
+ptrexists	rule	v2	ledger	every path in a pointer cell is in the ledger	judge B pointer accuracy
+ptrunread	rule	v2	ledger	no pointer names a file the ledger marks unread	unopened files must not back a row
+ptrdeep	rule	v2	ledger	a row with deep cites at least one ledger-deep path	depth must match what was read
+ptrshallow	lead	v2	ledger	a row cites a ledger-deep path but lacks deep	row may understate
+names	rule	v2	env	no PRIMER_NAMES match	project rule 8
+verb	lead	v2	primer	built, designed or implemented in a row without deep	claim-verb limits in preflight.md
+unreleased	lead	v2	primer	the word unreleased	repo-reader lesson 1
+acronym	lead	v2	primer	acronym not defined in terms or legend	judge A: undefined terms
+srccommit	lead	v2	primer	a row cites a commit (keyword plus 7 to 40 hex characters, not the pin) but its Source has no declared	retest 2026-11-05: rows mixed commit-message evidence under Source code

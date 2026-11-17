@@ -1,0 +1,46 @@
+name	mutation	expected
+base-clean	none	-
+dash	append:Demo \xe2\x80\x94 line	dash
+words-over	pad-to:1301	words
+words-exactly-at-limit	pad-to:1300	-
+header-missing	delete-line:^stack:	header
+header3-terms-missing	delete-line:^terms:	header3
+header3-legend-missing	delete-line:^legend:	header3
+files-line-gone	delete-line:^files:	header3,ledgersum
+legend-changed	sed:s/code read and understood/code read/	legend
+facet-missing	delete-line:^\| 7 \|	facets
+facet-renamed	sed:s/Data layer/Storage/	facets
+depth-word-bad	sed:s/\| skimmed \|/\| skimmmed \|/	vocab
+many-sources	sed:s/(Language and runtime.*)\| code \|$/\1\| code, declared, inferred \|/	manysources
+memory-only-in-main-row	sed:s/(Framework and platform.*)\| code \|$/\1\| memory \|/	memrow
+files-sum-wrong	sed:s/= 1 deep/= 2 deep/	filesline,ledgersum
+ledger-counts-differ	ledger-sed:s/\tskimmed\t/\tdeep\t/	ledgersum,ptrshallow
+ledger-wrong-sha	ledger-name:12345678	ledgersha
+pointer-not-in-ledger	sed:s#src/B\.php#src/Z.php#	ptrexists
+pointer-to-unread	sed:s#src/B\.php#empty.txt#	ptrunread
+deep-row-no-deep-path	sed:s#src/A\.php lines 1-20 \(run\)#src/B.php#	ptrdeep
+shallow-row-cites-deep	sed:s#src/B\.php#src/A.php#	ptrshallow
+internal-name	sed:s/Demo service/Demo service zork1/	names
+verb-in-skimmed-row	sed:s/\| PHP \|/\| PHP, built it \|/	verb
+unreleased-word	sed:s/Demo service/Demo service, unreleased/	unreleased
+unlisted-acronym	sed:s/Demo service/Demo QZX service/	acronym
+root-file-pointer	sed:s#src/B\.php#README.md#	-
+composite-depth-cell	sed:s/\| deep \| src/\| deep (run), skimmed (rest) \| src/	-
+lint-ok-suppresses	sed:s/Demo service/Demo service unreleased <!-- lint-ok: unreleased -->/	-
+old-style-no-ledger	old-style ;; no-ledger	-
+many-sources-ok-in-facet-11	sed:s/(Problem and solution.*)\| code \|$/\1\| code, declared, memory \|/	-
+verb-ok-in-memory-row	sed:s/testing only/built on a service/	-
+acronym-defined-inline	sed:s/Demo service/Demo QZX (a made-up thing) service/	-
+row-marked-unread-may-cite-unread-file	sed:s/(Language and runtime.*)\| skimmed \| src\/B\.php/\1\| unread \| empty.txt/	-
+none-found-row-may-cite-deep-file	sed:s/(Framework and platform.*)\| none found \| \| code/\1\| none found \| src\/A.php \| code/	-
+tag-names-in-pointer-not-paths	sed:s/\| src\/B.php \| code \|/\| src\/B.php @ tag 8.x-2.0 and 7.x-1.x and v9.x \| code \|/	-
+srccommit-fires-8hex	sed:s/\| src\/B.php \| code \|/\| src\/B.php commit 1a2b3c4d \| code \|/	srccommit
+srccommit-fires-7hex	sed:s/\| src\/B.php \| code \|/\| src\/B.php commit 1a2b3c4 \| code \|/	srccommit
+srccommit-fires-40hex	sed:s/\| src\/B.php \| code \|/\| src\/B.php diff 1a2b3c4d5e6f1a2b3c4d5e6f1a2b3c4d5e6f1a2b \| code \|/	srccommit
+srccommit-fires-uppercase	sed:s/\| src\/B.php \| code \|/\| src\/B.php commit 1A2B3C4D \| code \|/	srccommit
+srccommit-ok-with-declared	sed:s/\| src\/B.php \| code \|/\| src\/B.php commit 1a2b3c4d \| code, declared \|/	-
+srccommit-ok-pin-prefix	sed:s/\| src\/B.php \| code \|/\| src\/B.php commit abcdef01 \| code \|/	-
+srccommit-ok-colour-code	sed:s/\| src\/B.php \| code \|/\| src\/B.php uses #a1b2c3d4 \| code \|/	-
+srccommit-ok-bare-hex-word	sed:s/\| src\/B.php \| code \|/\| src\/B.php cafe1234 \| code \|/	-
+ledger-empty-bytes-column	ledger-sed:s/^(src\/B.php)\t500\t/\1\t\t/	-
+ledger-crlf	ledger-sed:s/$/\r/	-
